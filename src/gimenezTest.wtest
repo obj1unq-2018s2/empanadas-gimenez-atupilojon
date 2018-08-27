@@ -1,0 +1,32 @@
+import empleados.*
+
+describe "test gimenez"{
+	
+	test "inicio contabilidad de gimenez" {
+		assert.equals(15000, gimenez.sueldo())
+		assert.equals(0, gimenez.totalDeuda())
+		assert.equals(0, gimenez.totalDinero())
+	}
+	
+	test "gimenez no tiene plata y gasta"{
+		gimenez.gastar(4000)
+		assert.equals(4000, gimenez.totalDeuda())
+		assert.equals(0, gimenez.totalDinero())
+	}
+	
+	test "baigorria sigue gastando" {
+		gimenez.gastar(4000)
+		gimenez.gastar(8000)
+		assert.equals(12000, gimenez.totalDeuda())
+		assert.equals(0, gimenez.totalDinero())
+	}
+	
+	test "gimenez cobra y salda deudas" {
+		gimenez.gastar(4000)
+		gimenez.gastar(8000)
+		gimenez.cobrarSueldo()
+		assert.equals(0, gimenez.totalDeuda())
+		assert.equals(3000, gimenez.totalDinero())
+	}
+
+}
