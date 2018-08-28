@@ -16,14 +16,14 @@ object gimenez {
 			deuda -= sueldo
 		}
 		else {
+			dinero += (sueldo - deuda)
 			deuda = 0
-			dinero += (sueldo -deuda)
 		}
 	}
 	method totalCobrado() {return dinero}
 	method gastar(monto) {
 		if (monto > dinero) {
-			deuda += monto - dinero
+			deuda += (monto - dinero)
 			dinero = 0
 		}
 		else {
